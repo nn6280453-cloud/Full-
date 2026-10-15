@@ -1,0 +1,4 @@
+flask
+neonize
+requests
+python-dotenv
