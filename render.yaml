@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: nima-fulldp
+    runtime: python
+    plan: free
+    region: singapore
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 --threads 4 --timeout 120 -b 0.0.0.0:$PORT app:app
+    envVars:
+      - key: IMGBB_API_KEY
+        sync: false
+      - key: SESSION_ROOT
+        value: /opt/render/project/src/sessions
+      - key: PYTHON_VERSION
+        value: 3.11.0
