@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["python311", "gcc", "go", "pkg-config", "openssl", "git"]
+
+[phases.install]
+cmds = ["pip install --upgrade pip", "pip install -r requirements.txt"]
+
+[start]
+cmd = "gunicorn -w 1 --threads 4 --timeout 120 -b 0.0.0.0:$PORT app:app"
